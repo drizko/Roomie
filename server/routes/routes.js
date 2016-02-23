@@ -7,7 +7,7 @@ var bodyParser  = require('body-parser');
 module.exports = function(app, express) {
   var userRouter = express.Router();
   var profileRouter = express.Router();
-  var contactRouter = express.Router();
+  var friendRouter = express.Router();
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
@@ -16,7 +16,7 @@ module.exports = function(app, express) {
 
   app.use('/api/users', userRouter);
   app.use('/api/profile', profileRouter);
-  app.use('/api/contact', contactRouter);
+  app.use('/api/contact', friendRouter);
 
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
@@ -24,5 +24,5 @@ module.exports = function(app, express) {
   // inject our routers into their respective route files
   require('./userRoute.js')(userRouter);
   require('./profileRoute.js')(profileRouter);
-  require('./friendRoute.js')(contactRouter);
+  require('./friendRoute.js')(friendRouter);
 };

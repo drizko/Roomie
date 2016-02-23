@@ -2,12 +2,13 @@ angular.module('roomie.contact', [])
   .controller('ContactController', function($scope, State) {
 
 
-    $scope.getContact = function() {
-      State.getContact().then(function(data) {
-          $scope.data = data;
-        });
-    }
-    $scope.getContact();
+    State.getContact().then(function(data) {
+      console.log("From getContact");
+      $scope.data = data;
+    })
+    .catch(function(err){
+      console.log("Cant get contact", err);
+    })
 
     // $scope.data = [{
     //   firstname: 'Daniel',

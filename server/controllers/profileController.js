@@ -130,6 +130,14 @@ var helpers = {
           callback(item)
         })
       })
+  },
+  getUsersFromDb: function(req, userIdArray, callback){
+
+    knex('Users')
+      .whereIn('id', userIdArray)
+      .then(function(user){
+        callback(user);
+      })
   }
 };
 
