@@ -176,23 +176,6 @@ var helpers = {
         about_me: aboutMe,
         image_url: imageUrl
       })
-  },
-  updateProfile: function(req, res, next){
-    var loggedUser = jwt.decode(req.headers['x-access-token'], 'secret');
-
-    var firstName = req.body.firstname;
-    var lastName = req.body.lastname;
-    var aboutMe = req.body.about_me;
-    var imageUrl = req.body.image_url;
-
-    knex('Users')
-      .where('id', loggedUser.id)
-      .update({
-        firstname: firstName,
-        lastname: lastName,
-        about_me: aboutMe,
-        image_url: imageUrl
-      })
   }
 };
 
